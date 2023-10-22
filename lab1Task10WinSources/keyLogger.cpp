@@ -70,13 +70,5 @@ void saveToFile(int key) {
 		out << (char)std::tolower(key);
 		break;
 	}
-	/*
-	if (GetAsyncKeyState(VK_LSHIFT) | GetAsyncKeyState(VK_RSHIFT)) {
-		out << "Shift";
-	}
-	else {
-		out << (char)std::tolower(key);
-	}
-	*/
 	out.close();
 }
